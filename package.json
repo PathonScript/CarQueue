@@ -28,6 +28,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@rodneylab/svelte-social-icons": "^0.0.21"
+    "@rodneylab/svelte-social-icons": "^0.0.21",
+    "firebase": "^9.8.2"
   }
 }
