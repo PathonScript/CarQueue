@@ -1,20 +1,23 @@
+<script>
+  import { auth, db } from '../firebase'
+  import { onAuthStateChanged } from 'firebase/auth'
+  import LoginForm from '$lib/components/LoginForm.svelte'
+  import Admin from '$lib/components/Admin.svelte'
 
-<div class="flex flex-row w-full h-screen items-center justify-center">
+  let isUser;
+ 
+  auth.onAuthStateChanged((user) => {
+		if (user) {
+			isUser = true;
+		} else {
+			isUser = false;
+		}
+	});
 
-  <div class="flex w-3/4 h-3/4 items-center justify-center">
-    <!-- email and password form -->
-    <form action="/admin" method="POST">
-      <div class="flex flex-col items-center">
-        <label for="email" class="text-lg">Email</label>
-        <input type="email" name="email" id="email" class="border border-gray-400 p-2 w-full" />
-      </div>
-      <div class="flex flex-col items-center">
-        <label for="password" class="text-lg">Password</label>
-        <input type="password" name="password" id="password" class="border border-gray-400 p-2 w-full" />
-      </div>
-      <div class="flex flex-col items-center my-5">
-        <button type="submit" class="bg-blue-600 text-white p-4 px-5 rounded-lg">Login</button>
-      </div>
-    </form>
-  </div>
-</div>
+</script>
+
+{#if !isUser}
+  <LoginForm />
+{:else if isUser}
+  <Admin />
+{/if}
