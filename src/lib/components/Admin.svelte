@@ -5,10 +5,15 @@
   import { onSnapshot, collection, doc, deleteDoc } from 'firebase/firestore';
 
   import Queue from './Queue.svelte';
+  import Status from './Status.svelte';
+  import Selector from './Selector.svelte';
 
-  const q = collection(db, "queue");
+  const queueRef = collection(db, "queue");
   let queues = [];
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  let namee = JSON.parse('["Mulan","Peach","Oahm ","Amm","Pub","Yayo","Atom","Muna","Pat","Baikhao","Pai","Bouquet","PK","Prewa","Rak"]');
+
+
+  const unsubscribe = onSnapshot(queueRef, (querySnapshot) => {
     queues = []
     querySnapshot.forEach((doc) => {
       queues.push({
@@ -19,43 +24,28 @@
       });
     });
     console.log(queues)
-
-
   });
   
   const Clear = async(id) => {
     console.log("Cleared: " + id);
     await deleteDoc(doc(db, "queue", id));
-
   }
+
 </script>
 
-<div class="flex flex-col w-full h-auto items-center justify-center mt-40">
-  <div class="flex">
-    <form action="/admin" method="POST">
-      <div class="flex flex-col items-center">
-        <label for="name" class="text-lg">Name</label>
-        <input type="text" name="name" id="name" class="border border-gray-400 p-2 w-full" />
-      </div>
-      <div class="flex flex-col items-center">
-        <label for="car" class="text-lg">Car</label>
-        <input type="text" name="car" id="car" class="border border-gray-400 p-2 w-full" />
-      </div>
-      <div class="flex flex-col items-center my-5">
-        <button type="submit" class="bg-blue-600 text-white p-4 px-5 rounded-lg">Submit</button>
-      </div>
-    </form>
-  </div>
-</div>
+<Selector names={namee}/>
 
+
+
+<!-- Students list -->
 <div class="grid grid-cols-4 w-full">
   {#each queues as queue}
   <div class="m-2">
-    <div class="flex flex-col w-full items-center justify-center min-h-min p-4 border-4 border-gray rounded-lg">
-        <h1 class="text-6xl">{queue.name}</h1> 
-        <h1 class="text-3xl">{queue.car}</h1> 
-        <h1 class="text-3xl">{queue.status}</h1> 
-        <button on:click={Clear(queue.id)}>Clear</button>
+    <div class="flex flex-col w-full items-center justify-center min-h-min p-4 border-4 border-slate-600 rounded-lg">
+        <h1 class="text-2xl sm:text-6xl">{queue.name}</h1> 
+        <!-- <h1 class="text-xl sm:text-3xl">{queue.car}</h1>  -->
+        <Status status={queue.status}/>
+        <button class="text-red-500"on:click={Clear(queue.id)}>Clear</button>
       </div>
     </div>
   {/each}
