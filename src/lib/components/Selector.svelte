@@ -5,7 +5,9 @@
 
   const Update = async(name, status) => {
     // set doc with name with status arrived
-    const queueRef = doc(db, "queue")
+
+
+    const queueRef = doc(db, "queue", (Math.random() * 1000000000).toString());
     const res = await setDoc(queueRef, {
       name: name,
       status: status

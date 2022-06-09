@@ -12,7 +12,6 @@ import { db } from '../../firebase';
 
   const queueRef = collection(db, "queue");
   let queues = [];
-  let names = grade8
 
 
   const unsubscribe = onSnapshot(queueRef, (querySnapshot) => {
@@ -36,11 +35,11 @@ import { db } from '../../firebase';
 </script>
 
 <div class="w-full h-auto grid grid-cols-5 text-center">
-  <div class="bg-slate-600 rounded-lg min-h-min py-16 m-5">
+  <div class="bg-slate-600 rounded-lg min-h-0 py-4 sm:py-16 m-5">
     <Modal
       classWindowWrap="relative m-2 max-h-full"
       classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
-    ><OpenModal names={names}/></Modal>
+    ><OpenModal title={grade8.name} names={grade8.students}/></Modal>
   </div>
 </div>
 <hr />

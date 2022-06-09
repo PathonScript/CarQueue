@@ -1,4 +1,5 @@
 <script>
+  export let title;
   export let names;
 
   import Selector from './Selector.svelte'
@@ -7,4 +8,4 @@
   const showSurprise = () => open(Selector, { names: names });
 </script>
 
-<p><button class="text-white text-base sm:text-3xl" on:click={showSurprise}>Class Button</button></p>
+<p><button class="text-white text-base sm:text-3xl" on:click={showSurprise}>{title}</button></p>
