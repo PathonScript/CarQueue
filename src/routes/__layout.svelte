@@ -15,6 +15,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
 </svelte:head>
 
-<div class="absolute top-0 right-0 flex flex-row gap-2">
-	<a href="/admin" class="text-xs sm:text-md bg-blue-600 text-white p-4 sm:p-6 rounded-lg">Admin Login</a>
+<div class="m-2 absolute top-0 right-0 flex flex-row gap-2">
+	<a href="/admin" class="text-xs sm:text-lg bg-blue-600 text-white p-4 sm:p-4 rounded-lg">Admin Login</a>
 </div>

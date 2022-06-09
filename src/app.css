@@ -5,10 +5,3 @@
 *{
   font-family: 'Kanit', sans-serif;
 }
-
-@layer components {
-  
-  .queue-grid {
-    @apply grid grid-cols-5
-  }
-}
