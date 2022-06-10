@@ -1,14 +1,31 @@
 <script>
 // @ts-nocheck
+
   import { onSnapshot, collection, doc, deleteDoc } from 'firebase/firestore';
+  import { listAll, ref, getDownloadURL, getBlob } from 'firebase/storage';
+
   import Modal from 'svelte-simple-modal';
   import OpenModal from './OpenModal.svelte'
 
-import { db } from '../../firebase';
+  import { db, storage } from '../../firebase';
   import Queue from './Queue.svelte';
   import Status from './Status.svelte';
   import Selector from './Selector.svelte';
-  import grade8 from '../../G8.json'
+  import { onMount } from 'svelte';
+
+  import G7 from '../../classes/G7.json'
+  import G8 from '../../classes/G8.json'
+
+  let grades = [];
+
+  // Read JSON File
+  // gs://carqueue-4879f.appspot.com
+  // const fileRef = ref(storage, 'classes')
+
+  
+  grades.push(G7)
+  grades.push(G8)
+  console.log(grades)
 
   const queueRef = collection(db, "queue");
   let queues = [];
@@ -36,12 +53,15 @@ import { db } from '../../firebase';
 
 <div class="w-full h-auto grid grid-cols-5 text-center">
   <div class="bg-slate-600 rounded-lg min-h-0 py-4 sm:py-16 m-5">
-    <Modal
-      classWindowWrap="relative m-2 max-h-full"
-      classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
-    ><OpenModal title={grade8.name} names={grade8.students}/></Modal>
+    {#each grades as grade}
+       <Modal
+         classWindowWrap="relative m-2 max-h-full"
+         classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
+       ><OpenModal title={grade.name} names={grade.students}/></Modal>
+    {/each}
   </div>
 </div>
+
 <hr />
 
 <!-- Students list -->
