@@ -1,10 +1,9 @@
-## This project is created with SvelteKit and TailwindCSS
+# CarQueue
 
-# How
-```
-git clone [this repo]
-npm i
-npm run dev
-```
+A web application for displaying students that needs to go home.
 
-> Note: change the "name" in the package.json to your desired name too
+
+## About
+
+- 6/6/2022 - CarQueue idea introduced by T.Arm
+- 6/6/2022 - Started development
