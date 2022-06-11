@@ -16,6 +16,11 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 });
 </script>
 
+<a href="/admin">
+	<div class="m-2 absolute top-0 right-0 flex flex-row gap-2 px-2">
+		<button class="bg-blue-500 hover:bg-blue-400 rounded-xl hover:rounded-md text-white p-4 transition-all">Admin</button>
+	</div>
+</a>
 
 <a href="/">
 	<div class="flex flex-col w-full min-h-min items-center justify-center bg-slate-700 py-2 sm:py-4">

@@ -5,7 +5,7 @@
   import Selector from './Selector.svelte'
   import { getContext } from 'svelte';
   const { open } = getContext('simple-modal');
-  const showSurprise = () => open(Selector, { names: names });
+  export const showSurprise = () => open(Selector, { names: names });
 </script>
 
 <p><button class="text-white text-base sm:text-3xl" on:click={showSurprise}>{title}</button></p>
