@@ -3,6 +3,12 @@
 	// import Socials from '$lib/components/Socials.svelte';
 </script>
 
+<a href="/">
+	<div class="flex flex-col w-full min-h-min items-center justify-center bg-slate-700 py-2 sm:py-4">
+		<h1 class="flex text-5xl text-slate-50">🏠 Car Queue 🚗</h1>
+	</div>
+</a>
+
 <slot />
 <!-- 
 <div class="absolute bottom-0 right-0 p-3 flex flex-row gap-2">

@@ -2,7 +2,7 @@
   export let title;
   export let names;
 
-  import Selector from './Selector.svelte'
+  import Selector from '../Selector.svelte'
   import { getContext } from 'svelte';
   const { open } = getContext('simple-modal');
   export const showSurprise = () => open(Selector, { names: names });

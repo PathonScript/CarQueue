@@ -22,16 +22,12 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 	</div>
 </a>
 
-<a href="/">
-	<div class="flex flex-col w-full min-h-min items-center justify-center bg-slate-700 py-2 sm:py-4">
-		<h1 class="flex text-5xl text-slate-50">🏠 Car Queue 🚗</h1>
-	</div>
-</a>
+
 
 <div class="grid grid-cols-3 md:grid-cols-5 sm:grid-cols-4">
 
 	{#each queues as queue}
-		<Queue name={queue.name} car={queue.car} status={queue.status} />
+		<Queue name={queue.name} status={queue.status} />
 	{/each}
 
 </div>

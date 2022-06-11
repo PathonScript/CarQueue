@@ -1,8 +1,8 @@
 <script>
   import { auth, db } from '../firebase'
   import { onAuthStateChanged } from 'firebase/auth'
-  import LoginForm from '$lib/components/LoginForm.svelte'
-  import Admin from '$lib/components/Admin.svelte'
+  import LoginForm from '$lib/components/page/LoginForm.svelte'
+  import Admin from '$lib/components/page/Admin.svelte'
 
   let isUser;
  
@@ -15,11 +15,7 @@
 	});
 
 </script>
-<a href="/">
-  <div class="flex flex-col w-full min-h-min items-center justify-center bg-slate-700 py-4">
-    <h1 class="flex text-5xl text-slate-50">🏠 Car Queue 🚗</h1>
-  </div>
-</a>
+
 
 {#if !isUser}
   <LoginForm />

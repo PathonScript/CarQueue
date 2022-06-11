@@ -5,13 +5,12 @@
   import { listAll, ref, getDownloadURL, getBlob } from 'firebase/storage';
 
   import Modal from 'svelte-simple-modal';
-  import OpenModal from './OpenModal.svelte'
+  import { fly } from "svelte/transition"
+  import OpenSelector from '../functions/OpenSelector.svelte'
+  import OpenEditor from '../functions/OpenEditor.svelte'
 
-  import { db, storage } from '../../firebase';
-  import Queue from './Queue.svelte';
-  import Status from './Status.svelte';
-  import Selector from './Selector.svelte';
-  import { onMount } from 'svelte';
+  import { db, storage } from '../../../firebase';
+  import Status from '../Status.svelte';
 
   let grades = [];
 
@@ -35,7 +34,6 @@
         id: doc.id
       });
     });
-    console.log(queues)
   });
 
   const unsubscribe2 = onSnapshot(studentsRef, (querySnapshot) => {
@@ -54,8 +52,6 @@
     await deleteDoc(doc(db, "queue", id));
   }
 
-  let value = "Hi\nMom!";
-
   let child;
 </script>
 
@@ -65,7 +61,15 @@
        <Modal
          classWindowWrap="relative m-2 max-h-full"
          classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
-       ><OpenModal title={grade.name} names={grade.students}/></Modal>
+       >
+        <OpenSelector title={grade.name} names={grade.students}/>
+      </Modal>
+       <Modal
+        classWindowWrap="relative m-2 max-h-full"
+         classWindow="relative w-full h-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
+       >
+        <OpenEditor className={grade.name} studentsName={grade.students}/>
+       </Modal>
     </div>
   {/each}
 </div>
@@ -76,7 +80,7 @@
 <div class="grid grid-cols-2 sm:grid-cols-4 w-full">
   {#each queues as queue}
   <div class="m-2">
-    <div class="flex flex-col items-center justify-center min-h-min p-4 border-4 border-slate-600 rounded-lg">
+    <div in:fly={{ x: 500, duration: 1000, delay: 0 }} out:fly={{ x: -500, duration: 500, delay: 0}} class="flex flex-col items-center justify-center min-h-min p-4 border-4 border-slate-600 rounded-lg">
         <h1 class="text-2xl sm:text-6xl">{queue.name}</h1> 
         <!-- <h1 class="text-xl sm:text-3xl">{queue.car}</h1>  -->
         <Status status={queue.status}/>
