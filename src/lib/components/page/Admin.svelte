@@ -6,10 +6,12 @@
 
   import Modal from 'svelte-simple-modal';
   import { fly } from "svelte/transition"
+
   import OpenSelector from '../functions/OpenSelector.svelte'
   import OpenEditor from '../functions/OpenEditor.svelte'
+  import OpenCreator from '../functions/OpenCreator.svelte'
 
-  import { db, storage } from '../../../firebase';
+  import { db } from '../../../firebase';
   import Status from '../Status.svelte';
 
   let grades = [];
@@ -29,7 +31,6 @@
     querySnapshot.forEach((doc) => {
       queues.push({
         name: doc.data().name, 
-        car: doc.data().car, 
         status: doc.data().status,
         id: doc.id
       });
@@ -40,6 +41,7 @@
     grades = []
     querySnapshot.forEach((doc) => {
       grades.push({
+        id: doc.id,
         name: doc.data().name, 
         students: doc.data().students
       });
@@ -52,9 +54,13 @@
     await deleteDoc(doc(db, "queue", id));
   }
 
-  let child;
+  const DeleteClass = async(id) => {
+    console.log("Deleted: " + id);
+    await deleteDoc(doc(db, "students", id));
+  }
 </script>
 
+<Modal><OpenCreator /></Modal>
 <div class="w-full h-auto grid grid-cols-5 text-center">
   {#each grades as grade}
     <div class="bg-slate-600 rounded-lg min-h-0 py-4 sm:py-16 m-5">
@@ -66,10 +72,11 @@
       </Modal>
        <Modal
         classWindowWrap="relative m-2 max-h-full"
-         classWindow="relative w-full h-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
+         classWindow="relative w-auto h-screen min-w-auto max-h-auto my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
        >
-        <OpenEditor className={grade.name} studentsName={grade.students}/>
+        <OpenEditor id={grade.id} className={grade.name} studentsName={grade.students}/>
        </Modal>
+       <button class="text-red-600 text-2xl"on:click={() => DeleteClass(grade.id)}>Delete</button>
     </div>
   {/each}
 </div>

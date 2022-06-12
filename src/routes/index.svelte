@@ -23,7 +23,6 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 </a>
 
 
-
 <div class="grid grid-cols-3 md:grid-cols-5 sm:grid-cols-4">
 
 	{#each queues as queue}
