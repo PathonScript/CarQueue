@@ -7,3 +7,4 @@ A web application for displaying students that needs to go home.
 
 - 6/6/2022 - CarQueue idea introduced by T.Arm
 - 6/6/2022 - Started development
+- 12/6/2022 - First Beta release
