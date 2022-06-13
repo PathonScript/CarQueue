@@ -15,6 +15,6 @@
 
 </script>
 
-
+<div class="bg-slate-600 rounded-lg min-h-0 py-4 sm:py-16 m-5 cursor-pointer" on:click={showSelector}>
   <p><button class="text-white text-base sm:text-5xl" on:click={showSelector}>{title}</button></p>
-  
+</div>

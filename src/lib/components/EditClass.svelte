@@ -22,9 +22,9 @@
 
 <div class="flex flex-col w-full h-full items-center justify-center">
   <!-- Class Name -->
-  <input class="text-2xl sm:text-5xl text-center" type="text" bind:value={className}>
+  <input class="text-2xl sm:text-5xl text-center" type="text" bind:value={className} placeholder="Class Name" required>
   <!-- Current Student \n each -->
-  <textarea class="text-lg p-2" bind:value={studentsLine} rows="25" cols="25"/>
+  <textarea class="text-lg p-2" bind:value={studentsLine} rows="25" cols="25"  placeholder="Students name separated by a new line" required/>
 
   <button class="border-2 border-slate-700 px-4 py-2 rounded-2xl hover:rounded-lg hover:bg-slate-400 transition-all" on:click={UpdateClass}>Submit</button> 
   <!-- Delete Class -->

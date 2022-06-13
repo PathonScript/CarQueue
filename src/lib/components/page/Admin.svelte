@@ -71,15 +71,13 @@
 <div class="w-full h-auto grid grid-cols-5 text-center">
   {#each grades as grade}
   <div class="flex flex-col">
-    <div class="bg-slate-600 rounded-lg min-h-0 py-4 sm:py-16 m-5">
-       <Modal
-         classWindowWrap="relative m-2 max-h-full"
-         classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
-       >
-        <OpenSelector title={grade.name} names={grade.students}/>
-      </Modal>
+    <Modal
+      classWindowWrap="relative m-2 max-h-full"
+      classWindow="relative w-full min-w-full max-h-full my-2 mx-auto text-orange-200 rounded shadow-md bg-indigo-900"
+    >
+      <OpenSelector title={grade.name} names={grade.students}/>
+    </Modal>
       
-    </div>
     <div class="flex flex-row justify-center">
       <div class="flex justify-center mx-1">
         <Modal
