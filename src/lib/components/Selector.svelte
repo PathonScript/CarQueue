@@ -10,11 +10,12 @@
       name: name,
       status: status
     }, { merge: true })
+    console.log(name, res)
   }
 
 </script>
 
-<div class="grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 w-full">
+<div class="grid grid-cols-2 md:grid-cols-6 sm:grid-cols-4 w-full">
   {#each names as name}
   <div class="flex flex-col p-2 bg-slate-500 rounded-lg m-3">
     <h1 class="text-4xl text-center">{name}</h1>

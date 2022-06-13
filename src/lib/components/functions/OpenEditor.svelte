@@ -9,4 +9,4 @@
   export const showEditor = () => open(EditClass, { id: id, className, studentsName });
 </script>
 
-<p><button class="text-white text-base sm:text-3xl" on:click={showEditor}>Edit</button></p>
+<p><button class="border-4 border-slate-700 rounded-lg py-1 px-4 text-center text-slate-700 text-base sm:text-3xl hover:bg-slate-700 hover:text-white" on:click={showEditor}>Edit</button></p>

@@ -1,6 +1,6 @@
 <script>
   import { db } from '../../firebase';
-  import { doc, getDocs, setDoc, collection } from 'firebase/firestore';
+  import { doc, setDoc } from 'firebase/firestore';
   
   export let id;
   export let className;
