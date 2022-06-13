@@ -10,7 +10,6 @@
       name: name,
       status: status
     }, { merge: true })
-    console.log(name, res)
   }
 
 </script>
@@ -21,7 +20,6 @@
     <h1 class="text-4xl text-center">{name}</h1>
     <div class="flex flex-row justify-center px-5">
       <button class="flex-1 text-white bg-green-500 rounded-lg py-2 px-3 my-2" on:click={() => Update(name, "arrived")}>Arrived</button>
-      <button class="flex-1 text-white bg-yellow-500 rounded-lg py-2 px-3 my-2" on:click={() => Update(name, "waiting")}>Waiting</button>
     </div>
   </div>
   {/each}

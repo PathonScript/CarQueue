@@ -11,7 +11,6 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 	queues = []
   querySnapshot.forEach((doc) => {
 		queues.push(doc.data())
-		console.log(queues)
   });
 });
 </script>

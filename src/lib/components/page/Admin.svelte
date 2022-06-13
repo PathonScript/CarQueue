@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
 
-  import { onSnapshot, collection, doc, deleteDoc } from 'firebase/firestore';
+  import { onSnapshot, collection, doc, deleteDoc, setDoc} from 'firebase/firestore';
   import { listAll, ref, getDownloadURL, getBlob } from 'firebase/storage';
 
   import Modal from 'svelte-simple-modal';
@@ -46,17 +46,23 @@
         students: doc.data().students
       });
     });
-    console.log(grades)
   });
   
   const Clear = async(id) => {
-    console.log("Cleared: " + id);
     await deleteDoc(doc(db, "queue", id));
   }
 
   const DeleteClass = async(id) => {
-    console.log("Deleted: " + id);
     await deleteDoc(doc(db, "students", id));
+  }
+
+  const Update = async(id, name, status) => {
+    // set doc with name with status arrived
+    const queueRef = doc(db, "queue", id);
+    const res = await setDoc(queueRef, {
+      name: name,
+      status: status
+    }, { merge: true })
   }
 </script>
 
@@ -91,6 +97,8 @@
         <h1 class="text-2xl sm:text-6xl">{queue.name}</h1> 
         <!-- <h1 class="text-xl sm:text-3xl">{queue.car}</h1>  -->
         <Status status={queue.status}/>
+        <button class="flex-1 text-white bg-yellow-500 rounded-lg py-2 px-3 my-2" on:click={() => Update(queue.id, queue.name, "waiting")}>Waiting</button>
+        
         <button class="text-red-500"on:click={Clear(queue.id)}>Clear</button>
       </div>
     </div>

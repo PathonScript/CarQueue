@@ -5,4 +5,4 @@
   export const showCreator = () => open(CreateClass);
 </script>
 
-<p><button class="text-slate-800 text-base sm:text-3xl" on:click={showCreator}>Create</button></p>
+<p><button class="text-green-600 text-base sm:text-3xl" on:click={showCreator}>Create</button></p>
